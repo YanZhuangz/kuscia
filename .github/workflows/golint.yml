@@ -1,9 +1,9 @@
 name: Go Analysis
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   staticcheck:
     name: Staticcheck Analysis
@@ -21,4 +21,4 @@ jobs:
         go install honnef.co/go/tools/cmd/staticcheck@latest
     - name: Run staticcheck
       run: |
-        staticcheck ./...
+        staticcheck -checks all -config staticcheck.conf ./...
