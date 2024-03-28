@@ -4,9 +4,14 @@ on:
     branches:
       - master
       - main
+      - release/*
+      - beta/*
   pull_request:
     branches:
+      - master
       - main
+      - release/*
+      - beta/*
 
 permissions:
   contents: read
@@ -52,3 +57,7 @@ jobs:
 
           # Optional:The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
+      - name: Run golangci-lint on new code
+        run: |
+          base_sha=${git merge-base HEAD main}
+          golangci-lint run --new-from-rev=$base_sha ./...
