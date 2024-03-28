@@ -133,3 +133,7 @@ func HashString(input string) (string, error) {
 
 	return hex.EncodeToString(hasher.Sum(nil))[:32], nil
 }
+
+func TestClint() error {
+	return nil
+}
