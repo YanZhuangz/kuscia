@@ -26,4 +26,4 @@ jobs:
         args: --config .golangci.yml
 
     - name: Run golangci-lint
-      run: golangci-lint run
+      run: golangci-lint run ./...
