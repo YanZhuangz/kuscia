@@ -56,6 +56,12 @@ jobs:
 
       - name: Print git diff with base branch
         run: git diff --name-only ${{ env.LAST_COMMIT_SHA }}...HEAD 
+
+      - name: Get list of changed files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: 'space-delimited'
         
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v4
@@ -73,7 +79,7 @@ jobs:
           # Note: by default the `.golangci.yml` file should be at the root of the repository.
           # The location of the configuration file can be changed by using `--config=`
           # args: --timeout=30m --config=/my/path/.golangci.yml --issues-exit-code=0
-          args: --new-from-rev=${{ env.LAST_COMMIT_SHA }} --out-format=github-actions
+          args: --new-from-rev=${{ env.LAST_COMMIT_SHA }} --out-format=github-actions ${{ steps.files.outputs.all }}
           
           # Optional: show only new issues if it's a pull request. The default value is `false`.
           # only-new-issues: true
