@@ -24,6 +24,9 @@ const (
 	// LabelPortName represents port name which defined in AppImage container port.
 	LabelPortName = "kuscia.secretflow/port-name"
 
+	// test ci
+	DomainId = "test"
+	
 	LabelController                      = "kuscia.secretflow/controller"
 	LabelGatewayProxy                    = "kuscia.secretflow/gateway-proxy"
 	LabelLoadBalancer                    = "kuscia.secretflow/loadbalancer"
