@@ -62,6 +62,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
         with:
           format: 'space-delimited'
+          exclude: '*.go'
         
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v4
