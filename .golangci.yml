@@ -138,6 +138,7 @@ linters-settings:
 
 linters:
   enable:
+    - unused
     - deadcode
     - govet
     - golint
@@ -150,5 +151,3 @@ linters:
     - goimports
   disable-all: true
   fast: false
-issues:
-  new-from-rev: HEAD~5
