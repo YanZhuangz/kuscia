@@ -246,6 +246,6 @@ func (protocol *Protocol) UnmarshalYAML(unmarshal func(interface{}) error) error
 }
 // test ci
 func TestCi() error {
-	domainId := "test-ci-123"
+	domainId := "test-ci-1234"
 	return nil
 }
