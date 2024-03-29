@@ -56,7 +56,7 @@ jobs:
 
       - name: Print git diff with base branch
         run: |
-          CHANGED_GO_FILES=$(git diff --name-only ${{ env.LAST_COMMIT_SHA }}...HEAD | grep '\.go$')
+          CHANGED_GO_FILES=$(git diff --name-only ${{ env.LAST_COMMIT_SHA }}...HEAD | grep '\.go$' | xargs)
           echo "CHANGED_GO_FILES=${CHANGED_GO_FILES}" >> $GITHUB_ENV
 
       # - name: Get list of changed files
