@@ -37,6 +37,7 @@ jobs:
         run: |
           echo "Current branch is ${GITHUB_REF##*/}"
           echo "Current commit hash is ${GITHUB_SHA}"
+
       - name: Print git log
         run: git log --pretty=oneline -5
 
