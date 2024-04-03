@@ -29,26 +29,25 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: '0'
 
       - name: Setup Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go }}
           cache: false
-      - name: Get Last Commit SHA
-        id: last_commit
+
+      - name: Install specific version of golangci-lint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/v1.14/install.sh | sh -s -- -b $(go env GOPATH)/bin
+          golangci-lint --version
+      - name: Run golangci-lint 
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            echo "LAST_COMMIT_SHA=${{ github.event.before }}" >> $GITHUB_ENV
+            LAST_COMMIT_SHA=${{ github.event.before }}"
           else
-            echo "LAST_COMMIT_SHA=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+            LAST_COMMIT_SHA=${{ github.event.pull_request.base.sha }}
           fi
-        
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v1
-        with:
-          version: v1.14
-          args: --new-from-rev=${{ env.LAST_COMMIT_SHA }} --out-format=github-actions --verbose
+          golangci-lint run --new-from-rev=${LAST_COMMIT_SHA} --out-format=github-actions --verbose
