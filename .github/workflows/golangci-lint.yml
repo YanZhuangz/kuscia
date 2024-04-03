@@ -46,7 +46,7 @@ jobs:
       - name: Run golangci-lint 
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            LAST_COMMIT_SHA=${{ github.event.before }}"
+            LAST_COMMIT_SHA=${{ github.event.before }}
           else
             LAST_COMMIT_SHA=${{ github.event.pull_request.base.sha }}
           fi
