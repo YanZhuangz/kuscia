@@ -145,7 +145,6 @@ linters-settings:
 
 linters:
   enable:
-    - unused
     - deadcode
     - govet
     - golint
