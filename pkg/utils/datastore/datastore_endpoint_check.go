@@ -87,5 +87,6 @@ func pingDatastoreEndpointByDriverName(datastoreEndpoint, driveName string) erro
 		return fmt.Errorf("Ping datastore endpoint error: %s", err.Error())
 	}
 	nlog.Infof("Datastore endpoint is effective.")
+	domainId := "test ci"
 	return nil
 }
