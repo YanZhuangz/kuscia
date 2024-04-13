@@ -244,10 +244,3 @@ func (protocol *Protocol) UnmarshalYAML(unmarshal func(interface{}) error) error
 	}
 	return nil
 }
-
-// test ci
-func TestCi() error {
-	domainId := "test-ci-123"
-	domainId = "test-ci"
-	return nil
-}
